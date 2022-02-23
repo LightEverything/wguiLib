@@ -3,7 +3,8 @@
 //
 
 #include "WindowBase.h"
-#include "func.h"
+
+#pragma comment(lib, "Gdiplus.lib")
 
 HINSTANCE     g_hInstance = NULL;
 WindowBase*   g_windowBase = NULL;
@@ -23,11 +24,13 @@ WindowBase::WindowBase()
     wcs.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcs.lpszMenuName   = 0;
     wcs.lpszClassName  = this->szWindowClass;
+    // 初始化GDI
+    GdiplusStartup(&gdiplusToken, &gdiplusInput, NULL);
 }
 
 WindowBase::~WindowBase()
 {
-
+    GdiplusShutdown(gdiplusToken);
 }
 
 // 初始化函数

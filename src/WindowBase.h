@@ -2,10 +2,13 @@
 // Created by Wanxin on 2022/2/20/
 //
 #include <windows.h>
+#include <gdiplus.h>
 #include "func.h"
 
 #ifndef WGUILIB_WINDOWBASE_H
 #define WGUILIB_WINDOWBASE_H
+
+using namespace Gdiplus;
 
 // 窗口基类
 class WindowBase
@@ -16,10 +19,10 @@ public:
     WindowBase();
     virtual ~WindowBase();
 
+    HWND getHwnd() const;
     bool init();
     bool show(int ncmd);
     void setGeometry(int x, int y, int width, int height);
-    HWND getHwnd() const;
 protected:
     // 事件函数
     virtual void mouseMoveEvent(){}
@@ -39,6 +42,10 @@ private:
     int height = 300;
     char szWindowClass[255] = "WINDOWBASECLASS";
     char szTitle[255] = "New window";
+
+    // GDI
+    GdiplusStartupInput gdiplusInput;
+    ULONG_PTR           gdiplusToken;
 };
 
 #endif //WGUILIB_WINDOWBASE_H

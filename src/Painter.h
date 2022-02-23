@@ -1,30 +1,32 @@
 //
-// Created by Wanxi on 2022/2/23.
+// Created by Wanxi on 2022/2/20
 //
 
 #ifndef WGUILIB_PAINTER_H
 #define WGUILIB_PAINTER_H
 
+#include <windows.h>
+#include <gdiplus.h>
+#include <string>
 #include "WindowBase.h"
+#include "func.h"
 
 class Painter final
 {
 public:
-    Painter(const WindowBase* wb);
+    Painter(WindowBase* wBase);
     ~Painter();
 
-    //绘制函数
-    bool drawLine(int x1, int y1, int x2, int y2);
-    bool drawRect(int leftRect, int rightRect, int topRect, int bottomRect);
-    // 根据矩形画圆形
-    bool drawEllipse(int leftRect, int rightRect, int topRect, int bottomRect);
-    bool drawText(int x, int y, const char* textContent);
-    // 绘制图形
-    bool drawPicture(const char* picturePath);
+    void drawLine(int x1, int y1, int x2, int y2);
+    void drawEllipse(int x, int y, int height, int width);
+    void drawRect(int x, int y, int height, int width);
+    void drawPicture(int x, int y, const std::wstring& str);
 private:
-    PAINTSTRUCT ps;
-    HWND        hwnd;
-    HDC         hdc;
+    HWND            hwnd;
+    HDC             hdc;
+    Pen             pen;
+    PAINTSTRUCT     ps;
+    Graphics        graphics;
 };
 
 #endif //WGUILIB_PAINTER_H

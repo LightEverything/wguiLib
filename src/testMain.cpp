@@ -6,7 +6,6 @@
 #include "Painter.h"
 #include "func.h"
 #include <gdiplus.h>
-#include <cstdio>
 
 extern HINSTANCE g_hInstance;
 
@@ -32,7 +31,7 @@ TestWindow::~TestWindow() noexcept
 void TestWindow::paintEvent()
 {
     Painter p(this);
-    p.drawLine(0, 0, 100, 100);
+    p.drawRect(0, 0, 100, 1000);
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE preInstance, LPSTR lpCmdLine, int ncmd)

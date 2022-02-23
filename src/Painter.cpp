@@ -4,11 +4,13 @@
 
 #include "Painter.h"
 
-// 画家类的实现
-Painter::Painter(const WindowBase* wb)
+Painter::Painter(WindowBase *wBase) :
+    hwnd(wBase->getHwnd()),
+    hdc(BeginPaint(hwnd, &ps)),
+    pen(WBLACK),
+    graphics(hdc)
 {
-    hwnd = wb->getHwnd();
-    hdc = BeginPaint(wb->getHwnd(), &ps);
+
 }
 
 Painter::~Painter()
@@ -16,23 +18,23 @@ Painter::~Painter()
     EndPaint(hwnd, &ps);
 }
 
-bool Painter::drawEllipse(int leftRect, int rightRect, int topRect, int bottomRect)
+void Painter::drawLine(int x1, int y1, int x2, int y2)
 {
-    return Ellipse(hdc, leftRect, topRect, rightRect, bottomRect);
+    graphics.DrawLine(&pen, x1, y1, x2, y2);
 }
 
-bool Painter::drawLine(int x1, int y1, int x2, int y2)
+void Painter::drawEllipse(int x, int y, int width, int height)
 {
-    MoveToEx(hdc, x1, y1, NULL);
-    return LineTo(hdc, x2, y2);
+    graphics.DrawEllipse(&pen, x, y, width, height);
 }
 
-bool Painter::drawRect(int leftRect, int rightRect, int topRect, int bottomRect)
+void Painter::drawRect(int x, int y, int height, int width)
 {
-    return Rectangle(hdc, leftRect, topRect, rightRect, bottomRect);
+    graphics.DrawRectangle(&pen, x, y, height, width);
 }
 
-bool Painter::drawPicture(const char *picturePath)
+void Painter::drawPicture(int x, int y, const std::wstring &str)
 {
-
+    Image image(str.c_str());
+    graphics.DrawImage(&image, x, y);
 }

@@ -1,10 +1,11 @@
-/* 基于新手的使用方便， 将所有类和实现文件放在两个文件中
- * 但是为了阅读和编写方便同样有分开的， 见src文件夹*/
-
-#ifndef WGUILIB_H
-#define WGUILIB_H
-
+//
+// Created by Wanxin on 2022/2/20/
+//
 #include <windows.h>
+#include "func.h"
+
+#ifndef WGUILIB_WINDOWBASE_H
+#define WGUILIB_WINDOWBASE_H
 
 // 窗口基类
 class WindowBase
@@ -40,24 +41,4 @@ private:
     char szTitle[255] = "New window";
 };
 
-// 绘图类
-class Painter final
-{
-public:
-    Painter(const WindowBase& wb);
-    ~Painter();
-
-    //绘制函数
-    bool drawLine(int x1, int y1, int x2, int y2);
-    bool drawRect(int leftRect, int rightRect, int topRect, int bottomRect);
-    // 根据矩形画圆形
-    bool drawEllipse(int leftRect, int rightRect, int topRect, int bottomRect);
-    bool drawText(int x, int y, const char* textContent);
-    bool drawPicture(const char* picturePath);
-private:
-    PAINTSTRUCT ps;
-    HWND        hwnd;
-    HDC         hdc;
-};
-
-#endif
+#endif //WGUILIB_WINDOWBASE_H

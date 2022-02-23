@@ -1,13 +1,12 @@
-#include "wguiLib.h"
+//
+// Created by Wanxin on 2022/2/20
+//
 
-// 全局变量
+#include "WindowBase.h"
+#include "func.h"
+
 HINSTANCE     g_hInstance = NULL;
 WindowBase*   g_windowBase = NULL;
-
-inline void errorBox(const char* textContent)
-{
-    MessageBox(NULL, textContent, "ERROR", MB_ICONERROR);
-}
 
 // 基类窗口的实现
 WindowBase::WindowBase()
@@ -26,6 +25,11 @@ WindowBase::WindowBase()
     wcs.lpszClassName  = this->szWindowClass;
 }
 
+WindowBase::~WindowBase()
+{
+
+}
+
 // 初始化函数
 bool WindowBase::init()
 {
@@ -35,7 +39,7 @@ bool WindowBase::init()
         return false;
     }
 
-        return true;
+    return true;
 }
 
 bool WindowBase::show(int ncmd)
@@ -81,87 +85,34 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
         case WM_CHAR:
             break;
         case WM_KEYUP:
-             g_windowBase->keyUpEvent();
+            g_windowBase->keyUpEvent();
             break;
         case WM_KEYDOWN:
-             g_windowBase->keyDownEvent();
+            g_windowBase->keyDownEvent();
             break;
         case WM_MOUSEMOVE:
-             g_windowBase->mouseMoveEvent();
+            g_windowBase->mouseMoveEvent();
             break;
         case WM_LBUTTONDOWN:
-             g_windowBase->mouseButtonEvent();
+            g_windowBase->mouseButtonEvent();
             break;
         case WM_RBUTTONDOWN:
-             g_windowBase->mouseButtonEvent();
+            g_windowBase->mouseButtonEvent();
             break;
         case WM_LBUTTONUP:
-             g_windowBase->mouseButtonEvent();
+            g_windowBase->mouseButtonEvent();
             break;
         case WM_RBUTTONUP:
-             g_windowBase->mouseButtonEvent();
+            g_windowBase->mouseButtonEvent();
             break;
         case WM_LBUTTONDBLCLK:
-             g_windowBase->mouseDButtonEvent();
+            g_windowBase->mouseDButtonEvent();
             break;
         case WM_RBUTTONDBLCLK:
-             g_windowBase->mouseDButtonEvent();
+            g_windowBase->mouseDButtonEvent();
             break;
         default:
             return DefWindowProc(hwnd, message, wparam, lparam);
     }
     return 0;
-}
-
-WindowBase::~WindowBase()
-{
-
-}
-
-// 画家类的实现
-Painter::Painter(const WindowBase& wb)
-{
-    hwnd = wb.getHwnd();
-    hdc = BeginPaint(wb.getHwnd(), &ps);
-}
-
-bool Painter::drawEllipse(int leftRect, int rightRect, int topRect, int bottomRect)
-{
-    return Ellipse(hdc, leftRect, topRect, rightRect, bottomRect);
-}
-
-bool Painter::drawLine(int x1, int y1, int x2, int y2)
-{
-    MoveToEx(hdc, x1, y1, NULL);
-    return LineTo(hdc, x2, y2);
-}
-
-bool Painter::drawRect(int leftRect, int rightRect, int topRect, int bottomRect)
-{
-    return Rectangle(hdc, leftRect, topRect, rightRect, bottomRect);
-}
-
-Painter::~Painter()
-{
-    EndPaint(hwnd, &ps);
-}
-
-// 启用控制台调试
-inline void debugConsole()
-{
-    AllocConsole();
-}
-
-// 启动消息循环
-WPARAM programExe()
-{
-    MSG msg = {0};
-
-    while (GetMessageA(&msg, NULL, 0, 0))
-    {
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
-    }
-
-    return msg.wParam;
 }

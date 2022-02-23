@@ -31,16 +31,14 @@ TestWindow::~TestWindow() noexcept
 void TestWindow::paintEvent()
 {
     Painter p(this);
-    p.drawRect(0, 0, 100, 1000);
+    p.drawText(10, 10, L"this is Text");
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE preInstance, LPSTR lpCmdLine, int ncmd)
+int main(int argc, char** argv)
 {
-    g_hInstance = hInstance;
-
     TestWindow w;
     w.init();
-    w.show(ncmd);
+    w.show(argc);
 
     return programExe();
 }

@@ -10,11 +10,10 @@ Painter::Painter(WindowBase *wBase) :
     hdc(BeginPaint(hwnd, &ps)),
     pen(new Pen(WBLACK)),
     graphics(hdc),
-    fontFamily(new FontFamily(L"Arial")),
-    font(new Font(fontFamily.get(), 15)),
+    fontFamily(L"Arial"),
+    fontSize(10),
     solidBrush(new SolidBrush(WBLACK))
 {
-
 }
 
 Painter::~Painter()
@@ -72,19 +71,25 @@ void Painter::drawCutPicture(int x, int y, int showX, int showY, const std::wstr
 void Painter::drawText(float x, float y, const std::wstring &str)
 {
     PointF pointF(x, y);
-    graphics.DrawString(str.c_str(), -1, font.get(), pointF, solidBrush.get());
+    FontFamily fF(fontFamily.c_str());
+    Font font(&fF, fontSize);
+    graphics.DrawString(str.c_str(), -1, &font, pointF, solidBrush.get());
 }
 
 void Painter::drawRectText(const RectF &frect, const std::wstring &str)
 {
-    graphics.DrawString(str.c_str(), -1, font.get(),
+    FontFamily fF(fontFamily.c_str());
+    Font font(&fF, fontSize);
+    graphics.DrawString(str.c_str(), -1, &font,
                         frect, stringFormat.get(), solidBrush.get());
 }
 
 void Painter::drawRectText(float x, float y, float width, float height, const std::wstring &str)
 {
+    FontFamily fF(fontFamily.c_str());
     RectF frect(x, y, width, height);
-    graphics.DrawString(str.c_str(), -1, font.get(),
+    Font font(&fF, fontSize);
+    graphics.DrawString(str.c_str(), -1, &font,
                         frect, stringFormat.get(), solidBrush.get());
 }
 
@@ -94,7 +99,7 @@ void Painter::setTextColor(const Color &c)
     solidBrush->SetColor(c);
 }
 
-void Painter::setFontWidth(int width)
+void Painter::setPenWidth(int width)
 {
     pen->SetWidth(width);
 }
@@ -104,12 +109,23 @@ void Painter::setPenColor(const Color &c)
     pen->SetColor(c);
 }
 
+// 暂时无法使用
 void Painter::setTextVertial(bool flag)
 {
     if (flag)
         stringFormat->SetFormatFlags(StringFormatFlagsDirectionVertical);
     else
         stringFormat->SetFormatFlags(StringFormatFlagsDisplayFormatControl);
+}
+
+void Painter::setTextWidth(int size)
+{
+    fontSize = size;
+}
+
+void Painter::setFontFamily(const std::wstring &str)
+{
+    fontFamily = str;
 }
 
 // 执行复制
@@ -126,14 +142,4 @@ void Painter::setStringFormat(const StringFormat &sg)
 void Painter::setPen(const Pen &p)
 {
     pen.reset(p.Clone());
-}
-
-void Painter::setFont(const Font &f)
-{
-    font.reset(f.Clone());
-}
-
-void Painter::setFontFamily(const std::wstring &str)
-{
-    fontFamily.reset(new FontFamily(str.c_str()));
 }

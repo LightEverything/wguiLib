@@ -37,23 +37,22 @@ public:
     void setPenColor(const Color& c);
     void setPen(const Pen& p);
     void setFontFamily(const std::wstring& str);
-    void setFont(const Font& f);
-    void setFontWidth(int width);
+    void setPenWidth(int width);
     void setTextColor(const Color& c);
     void setTextVertial(bool flag);
     void setStringFormat(const StringFormat& sg);
     void setSolidBrush(const SolidBrush& sb);
-
+    void setTextWidth(int size);
 private:
+    INT             fontSize;
     HWND            hwnd;
     HDC             hdc;
     PAINTSTRUCT     ps;
     Graphics        graphics;
+    std::wstring    fontFamily;
 
     // 由于需要进行拷贝，使用智能指针
     std::shared_ptr<Pen>            pen;
-    std::shared_ptr<FontFamily>     fontFamily;
-    std::shared_ptr<Font>           font;
     std::shared_ptr<StringFormat>   stringFormat;
     std::shared_ptr<SolidBrush>     solidBrush;
 };

@@ -12,6 +12,7 @@ Painter::Painter(WindowBase *wBase) :
     graphics(hdc),
     fontFamily(L"Arial"),
     fontSize(10),
+    stringFormat(new StringFormat()),
     solidBrush(new SolidBrush(WBLACK))
 {
 }
@@ -109,13 +110,13 @@ void Painter::setPenColor(const Color &c)
     pen->SetColor(c);
 }
 
-// 暂时无法使用
+// 设置字体朝向，true是垂直，false是水平
 void Painter::setTextVertial(bool flag)
 {
     if (flag)
         stringFormat->SetFormatFlags(StringFormatFlagsDirectionVertical);
     else
-        stringFormat->SetFormatFlags(StringFormatFlagsDisplayFormatControl);
+        stringFormat->SetFormatFlags(0x0);
 }
 
 void Painter::setTextWidth(int size)

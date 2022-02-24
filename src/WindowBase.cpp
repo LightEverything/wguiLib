@@ -63,7 +63,7 @@ void WindowBase::setGeometry(int x, int y, int width, int height)
     posY = y;
     this->width = width;
     this->height = height;
-    return ;
+    MoveWindow(hwnd, x, y, width, height, true);
 }
 
 // 获取窗口句柄
@@ -94,25 +94,46 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
             g_windowBase->keyDownEvent();
             break;
         case WM_MOUSEMOVE:
-            g_windowBase->mouseMoveEvent();
+        {
+            MouseEventC me(mouseNoClk, wparam, lparam);
+            g_windowBase->mouseMoveEvent(me);
+        }
             break;
         case WM_LBUTTONDOWN:
-            g_windowBase->mouseButtonEvent();
+        {
+            MouseEventC me(mouseLeftDown, wparam, lparam);
+            g_windowBase->mouseButtonEvent(me);
+        }
             break;
         case WM_RBUTTONDOWN:
-            g_windowBase->mouseButtonEvent();
+        {
+            MouseEventC me(mouseRightDown, wparam, lparam);
+            g_windowBase->mouseButtonEvent(me);
+        }
             break;
         case WM_LBUTTONUP:
-            g_windowBase->mouseButtonEvent();
+        {
+            MouseEventC me(mouseLeftUp, wparam, lparam);
+            g_windowBase->mouseButtonEvent(me);
+        }
             break;
         case WM_RBUTTONUP:
-            g_windowBase->mouseButtonEvent();
+        {
+            MouseEventC me(mouseRightUp, wparam, lparam);
+            g_windowBase->mouseButtonEvent(me);
+        }
             break;
         case WM_LBUTTONDBLCLK:
-            g_windowBase->mouseDButtonEvent();
+        {
+            MouseEventC me(mouseLeftDoubleClk, wparam, lparam);
+            g_windowBase->mouseButtonEvent(me);
+        }
             break;
         case WM_RBUTTONDBLCLK:
-            g_windowBase->mouseDButtonEvent();
+        {
+            MouseEventC me(mouseRightDoubleClk, wparam, lparam);
+            g_windowBase->mouseButtonEvent(me);
+        }
             break;
         default:
             return DefWindowProc(hwnd, message, wparam, lparam);

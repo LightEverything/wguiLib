@@ -17,6 +17,18 @@
 #define WYELLOW			Gdiplus::Color(255, 0, 0, 255)
 #define WWHITE			Gdiplus::Color(255, 255, 255, 255)
 
+// 鼠标枚举值
+enum    mouseButtonEnum
+{
+    mouseLeftDown,
+    mouseRightDown,
+    mouseLeftUp,
+    mouseRightUp,
+    mouseLeftDoubleClk,
+    mouseRightDoubleClk,
+    mouseNoClk
+};
+
 // 错误弹窗
 void errorBox(const char* textContent);
 // 启动调试窗口

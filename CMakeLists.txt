@@ -13,4 +13,7 @@ add_executable(wguiLib
         src/testMain.cpp
         src/func.cpp
         src/Painter.cpp
-        src/Painter.h)
+        src/Painter.h
+        src/MouseEventC.cpp
+        src/MouseEventC.h
+        wguiLib.h)

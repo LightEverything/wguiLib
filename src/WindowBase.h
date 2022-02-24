@@ -3,6 +3,7 @@
 //
 #include <windows.h>
 #include <gdiplus.h>
+#include "MouseEventC.h"
 #include "func.h"
 
 #ifndef WGUILIB_WINDOWBASE_H
@@ -25,12 +26,12 @@ public:
     void setGeometry(int x, int y, int width, int height);
 protected:
     // 事件函数
-    virtual void mouseMoveEvent(){}
+    virtual void mouseMoveEvent(MouseEventC& me){}
     virtual void keyUpEvent(){}
     virtual void keyDownEvent(){}
     virtual void paintEvent(){}
-    virtual void mouseButtonEvent(){}
-    virtual void mouseDButtonEvent(){}
+    virtual void mouseButtonEvent(MouseEventC& me){}
+
 private:
     HWND     hwnd;
     WNDCLASS wcs;

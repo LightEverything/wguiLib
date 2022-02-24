@@ -2,10 +2,7 @@
 // Created by Wanxi on 2022/2/23.
 //
 
-#include "WindowBase.h"
-#include "Painter.h"
-#include "func.h"
-#include <gdiplus.h>
+#include "./wguiLib.h"
 
 extern HINSTANCE g_hInstance;
 
@@ -16,6 +13,7 @@ public:
     ~TestWindow() noexcept;
 protected:
     virtual void paintEvent() override;
+    virtual void mouseButtonEvent(MouseEventC& me) override;
 };
 
 TestWindow::TestWindow() : WindowBase()
@@ -28,14 +26,23 @@ TestWindow::~TestWindow() noexcept
 
 }
 
+void TestWindow::mouseButtonEvent(MouseEventC &me)
+{
+    if (me.getButton() == mouseLeftUp)
+        printf("this x = %d, this y = %d", me.getX(), me.getY());
+    if (me.getButton() == mouseLeftDown)
+        printf("this x = %d, this y = %d", me.getX(), me.getY());
+}
+
 void TestWindow::paintEvent()
 {
     Painter p(this);
-    p.drawText(10, 10, L"this is Text");
+    p.drawText(10, 10, L"this is tet");
 }
 
 int main(int argc, char** argv)
 {
+    AllocConsole();
     TestWindow w;
     w.init();
     w.show(argc);

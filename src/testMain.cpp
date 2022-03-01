@@ -12,8 +12,7 @@ public:
     TestWindow();
     ~TestWindow() noexcept;
 protected:
-    virtual void paintEvent() override;
-    virtual void mouseButtonEvent(MouseEventC& me) override;
+    virtual void keyEvent(KeyEventC& ke) override;
 };
 
 TestWindow::TestWindow() : WindowBase()
@@ -26,23 +25,14 @@ TestWindow::~TestWindow() noexcept
 
 }
 
-void TestWindow::mouseButtonEvent(MouseEventC &me)
+void TestWindow::keyEvent(KeyEventC &ke)
 {
-    if (me.getButton() == mouseLeftUp)
-        printf("this x = %d, this y = %d", me.getX(), me.getY());
-    if (me.getButton() == mouseLeftDown)
-        printf("this x = %d, this y = %d", me.getX(), me.getY());
-}
-
-void TestWindow::paintEvent()
-{
-    Painter p(this);
-    p.drawText(10, 10, L"this is tet");
+    if (ke.status() == keyDown)
+        printf("%c\n", ke.getKey());
 }
 
 int main(int argc, char** argv)
 {
-    AllocConsole();
     TestWindow w;
     w.init();
     w.show(argc);

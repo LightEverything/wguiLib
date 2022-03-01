@@ -6,6 +6,7 @@
 #define WGUILIB_FUNC_H
 
 #include <windows.h>
+#include <cstdio>
 
 // define定义常用颜色
 #define WBLACK          Gdiplus::Color(255, 0, 0, 0)
@@ -27,6 +28,13 @@ enum    mouseButtonEnum
     mouseLeftDoubleClk,
     mouseRightDoubleClk,
     mouseNoClk
+};
+
+// 按键枚举值
+enum    keyEnum
+{
+    keyUp,
+    keyDown
 };
 
 // 错误弹窗

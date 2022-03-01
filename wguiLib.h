@@ -4,10 +4,17 @@
 #ifndef WGUILIB_H
 #define WGUILIB_H
 
+// win32API头文件
 #include <windows.h>
+// 常用过程函数
 #include "src/func.h"
+// 绘制函数
 #include "src/Painter.h"
+// 鼠标事件函数
 #include "src/MouseEventC.h"
+// 窗口基类
 #include "src/WindowBase.h"
+// 键盘事件函数
+#include "src/KeyEventC.h"
 
 #endif

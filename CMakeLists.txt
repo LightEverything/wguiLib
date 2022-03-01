@@ -16,4 +16,4 @@ add_executable(wguiLib
         src/Painter.h
         src/MouseEventC.cpp
         src/MouseEventC.h
-        wguiLib.h)
+        wguiLib.h src/KeyEventC.cpp src/KeyEventC.h src/Timer.cpp src/Timer.h)

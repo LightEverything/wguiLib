@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <gdiplus.h>
 #include "MouseEventC.h"
+#include "KeyEventC.h"
 #include "func.h"
 
 #ifndef WGUILIB_WINDOWBASE_H
@@ -27,10 +28,10 @@ public:
 protected:
     // 事件函数
     virtual void mouseMoveEvent(MouseEventC& me){}
-    virtual void keyUpEvent(){}
-    virtual void keyDownEvent(){}
+    virtual void keyEvent(KeyEventC& ke){}
     virtual void paintEvent(){}
     virtual void mouseButtonEvent(MouseEventC& me){}
+    virtual void timerEvent(){}
 
 private:
     HWND     hwnd;

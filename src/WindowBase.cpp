@@ -85,13 +85,21 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
             break;
         case WM_COMMAND:
             break;
+        // 同时处理KEYDOWN事件
         case WM_CHAR:
+        {
+            KeyEventC ke(wparam, keyDown);
+            g_windowBase->keyEvent(ke);
+        }
             break;
         case WM_KEYUP:
-            g_windowBase->keyUpEvent();
+        {
+            KeyEventC ke(wparam, keyUp);
+            g_windowBase->keyEvent(ke);
+        }
             break;
+        // 不进行事件重载,功能与WM_CHAR类似
         case WM_KEYDOWN:
-            g_windowBase->keyDownEvent();
             break;
         case WM_MOUSEMOVE:
         {
@@ -135,6 +143,10 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
             g_windowBase->mouseButtonEvent(me);
         }
             break;
+        case WM_TIMER:
+        {
+            g_windowBase->timerEvent();
+        }
         default:
             return DefWindowProc(hwnd, message, wparam, lparam);
     }

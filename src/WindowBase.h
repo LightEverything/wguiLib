@@ -31,7 +31,8 @@ protected:
     virtual void keyEvent(KeyEventC& ke){}
     virtual void paintEvent(){}
     virtual void mouseButtonEvent(MouseEventC& me){}
-    virtual void timerEvent(){}
+    virtual void timerEvent(int timerId){}
+    virtual void setTimer(){}
 
 private:
     HWND     hwnd;

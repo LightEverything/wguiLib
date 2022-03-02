@@ -51,9 +51,11 @@ bool WindowBase::show(int ncmd)
     {
         ShowWindow(hwnd, ncmd);
         UpdateWindow(hwnd);
+        setTimer();
         return true;
     }
 
+    errorBox("Show Windows Error");
     return false;
 }
 
@@ -77,6 +79,11 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
 {
     switch (message)
     {
+        case WM_TIMER:
+        {
+            int timerId = wparam;
+            g_windowBase->timerEvent(timerId);
+        }
         case WM_DESTROY:
             PostQuitMessage(0);
             break;
@@ -143,10 +150,6 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
             g_windowBase->mouseButtonEvent(me);
         }
             break;
-        case WM_TIMER:
-        {
-            g_windowBase->timerEvent();
-        }
         default:
             return DefWindowProc(hwnd, message, wparam, lparam);
     }

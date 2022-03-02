@@ -16,5 +16,7 @@
 #include "src/WindowBase.h"
 // 键盘事件函数
 #include "src/KeyEventC.h"
+// 计时器类
+#include "src/Timer.h"
 
 #endif

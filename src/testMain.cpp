@@ -13,6 +13,10 @@ public:
     ~TestWindow() noexcept;
 protected:
     virtual void keyEvent(KeyEventC& ke) override;
+    virtual void setTimer() override;
+    virtual void timerEvent(int ID) override;
+private:
+    Timer timer1;
 };
 
 TestWindow::TestWindow() : WindowBase()
@@ -31,6 +35,17 @@ void TestWindow::keyEvent(KeyEventC &ke)
         printf("%c\n", ke.getKey());
 }
 
+void TestWindow::setTimer()
+{
+    timer1.setId(10);
+    timer1.setParent(this);
+    timer1.startTimer(100);
+}
+
+void TestWindow::timerEvent(int ID)
+{
+    printf("&*&");
+}
 int main(int argc, char** argv)
 {
     TestWindow w;

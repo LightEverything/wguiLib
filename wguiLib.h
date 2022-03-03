@@ -18,5 +18,7 @@
 #include "src/KeyEventC.h"
 // 计时器类
 #include "src/Timer.h"
+// 按钮类
+#include "src/PushButton.h"
 
 #endif

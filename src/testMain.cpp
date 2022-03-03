@@ -17,9 +17,10 @@ protected:
     virtual void timerEvent(int ID) override;
 private:
     Timer timer1;
+    PushButton pushButton;
 };
 
-TestWindow::TestWindow() : WindowBase()
+TestWindow::TestWindow() : WindowBase(), pushButton(this)
 {
 
 }

@@ -31,6 +31,7 @@ protected:
     virtual void keyEvent(KeyEventC& ke){}
     virtual void paintEvent(){}
     virtual void mouseButtonEvent(MouseEventC& me){}
+    // 计时器还没调好....
     virtual void timerEvent(int timerId){}
     virtual void setTimer(){}
 
@@ -39,12 +40,12 @@ private:
     WNDCLASS wcs;
 
     // 窗口属性
-    int posX = 0;
-    int posY = 0;
-    int width = 300;
-    int height = 300;
-    char szWindowClass[255] = "WINDOWBASECLASS";
-    char szTitle[255] = "New window";
+    int     posX = 0;
+    int     posY = 0;
+    int     width = 300;
+    int     height = 300;
+    char    szWindowClass[255] = "WINDOWBASECLASS";
+    char    szTitle[255] = "New window";
 
     // GDI
     GdiplusStartupInput gdiplusInput;

@@ -16,8 +16,9 @@ PushButton::PushButton(WindowBase *parent, const char *buttonText, int x, int y,
     parentHwnd = parent->getHwnd();
     // 创建窗口
 
-    if (!(hwnd = CreateWindowA(szWindowClass, "123", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
-                         posX, posY, width, height, parentHwnd, NULL, (HINSTANCE)GetWindowLongPtr(parentHwnd, GWLP_HINSTANCE), NULL)))
+    if (!(hwnd = CreateWindowA(szWindowClass, szButtonText, WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+                         posX, posY, this->width, this->height, parentHwnd, NULL,
+                         (HINSTANCE)GetWindowLongPtr(parentHwnd, GWLP_HINSTANCE), NULL)))
     {
         errorBox("CreateWindow is Error");
     }

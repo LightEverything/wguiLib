@@ -9,10 +9,13 @@
 HINSTANCE     g_hInstance = NULL;
 WindowBase*   g_windowBase = NULL;
 
+// 初始化静态成员函数
+bool WindowBase::registers = false;
+
 // 基类窗口的实现
 WindowBase::WindowBase()
 {
-    // 初始化并且注册
+    // 初始化windowClass
     g_windowBase = this;
     wcs.style          = CS_HREDRAW | CS_VREDRAW;
     wcs.lpfnWndProc    = WinProc;
@@ -26,6 +29,23 @@ WindowBase::WindowBase()
     wcs.lpszClassName  = this->szWindowClass;
     // 初始化GDI
     GdiplusStartup(&gdiplusToken, &gdiplusInput, NULL);
+
+    // 如果未注册就注册
+    if (!registers)
+    {
+        init();
+        registers = true;
+    }
+
+    // 获取窗口句柄
+    if (!(hwnd = CreateWindowA(szWindowClass,
+                             szTitle,
+                             WS_OVERLAPPEDWINDOW,  // 样式
+                             posX, posY, width, height, NULL, NULL, 0, NULL)))
+    {
+        errorBox("Get windowsHandle error");
+    }
+
 }
 
 WindowBase::~WindowBase()
@@ -47,16 +67,8 @@ bool WindowBase::init()
 
 bool WindowBase::show(int ncmd)
 {
-    if (hwnd = CreateWindowA(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW, posX, posY, width, height, NULL, NULL, 0, NULL))
-    {
-        ShowWindow(hwnd, ncmd);
-        UpdateWindow(hwnd);
-        setTimer();
-        return true;
-    }
-
-    errorBox("Show Windows Error");
-    return false;
+    ShowWindow(hwnd, ncmd);
+    UpdateWindow(hwnd);
 }
 
 void WindowBase::setGeometry(int x, int y, int width, int height)

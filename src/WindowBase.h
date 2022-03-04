@@ -21,8 +21,10 @@ public:
     WindowBase();
     virtual ~WindowBase();
 
+    // 注册计数
+    static bool registers;
+
     HWND getHwnd() const;
-    bool init();
     bool show(int ncmd);
     void setGeometry(int x, int y, int width, int height);
 protected:
@@ -50,6 +52,9 @@ private:
     // GDI
     GdiplusStartupInput gdiplusInput;
     ULONG_PTR           gdiplusToken;
+
+    // 初始化函数
+    bool init();
 };
 
 #endif //WGUILIB_WINDOWBASE_H

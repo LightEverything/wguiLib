@@ -22,7 +22,6 @@ private:
 
 TestWindow::TestWindow() : WindowBase(), pushButton(this)
 {
-
 }
 
 TestWindow::~TestWindow() noexcept
@@ -50,7 +49,6 @@ void TestWindow::timerEvent(int ID)
 int main(int argc, char** argv)
 {
     TestWindow w;
-    w.init();
     w.show(argc);
 
     return programExe();

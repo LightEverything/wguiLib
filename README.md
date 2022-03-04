@@ -22,7 +22,6 @@
   int main(int argc, char** argv)
   {
     WindowBase w; // 窗口基类
-    w.init();    // 在显示之前必须初始化
     w.show(1);   // 显示窗口，1是ncmd，如果用main的话，可以选择argc
     
     return programExe();  // 开启消息循环

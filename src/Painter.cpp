@@ -8,12 +8,12 @@
 Painter::Painter(WindowBase *wBase) :
     hwnd(wBase->getHwnd()),
     hdc(BeginPaint(hwnd, &ps)),
-    pen(new Pen(WBLACK)),
+    pen(new Gdiplus::Pen(WBLACK)),
     graphics(hdc),
     fontFamily(L"Arial"),
     fontSize(10),
-    stringFormat(new StringFormat()),
-    solidBrush(new SolidBrush(WBLACK))
+    stringFormat(new Gdiplus::StringFormat()),
+    solidBrush(new Gdiplus::SolidBrush(WBLACK))
 {
 }
 
@@ -41,7 +41,7 @@ void Painter::drawRect(int x, int y, int height, int width)
 // 绘制图片
 void Painter::drawPicture(int x, int y, const std::wstring &str)
 {
-    Image image(str.c_str());
+    Gdiplus::Image image(str.c_str());
     graphics.DrawImage(&image, x, y);
 }
 
@@ -50,7 +50,7 @@ void Painter::drawScalePicture(
         double widthScale, double heightScale,
         const std::wstring &str)
 {
-    Image image(str.c_str());
+    Gdiplus::Image image(str.c_str());
     int owidth = image.GetWidth();
     int oheight = image.GetHeight();
 
@@ -61,7 +61,7 @@ void Painter::drawScalePicture(
 
 void Painter::drawCutPicture(int x, int y, int showX, int showY, const std::wstring &str)
 {
-    Image image(str.c_str());
+    Gdiplus::Image image(str.c_str());
     int owidth = image.GetWidth();
     int oheight = image.GetHeight();
 
@@ -71,31 +71,31 @@ void Painter::drawCutPicture(int x, int y, int showX, int showY, const std::wstr
 // 绘制文本
 void Painter::drawText(float x, float y, const std::wstring &str)
 {
-    PointF pointF(x, y);
-    FontFamily fF(fontFamily.c_str());
-    Font font(&fF, fontSize);
+    Gdiplus::PointF pointF(x, y);
+    Gdiplus::FontFamily fF(fontFamily.c_str());
+    Gdiplus::Font font(&fF, fontSize);
     graphics.DrawString(str.c_str(), -1, &font, pointF, solidBrush.get());
 }
 
-void Painter::drawRectText(const RectF &frect, const std::wstring &str)
+void Painter::drawRectText(const Gdiplus::RectF &frect, const std::wstring &str)
 {
-    FontFamily fF(fontFamily.c_str());
-    Font font(&fF, fontSize);
+    Gdiplus::FontFamily fF(fontFamily.c_str());
+    Gdiplus::Font font(&fF, fontSize);
     graphics.DrawString(str.c_str(), -1, &font,
                         frect, stringFormat.get(), solidBrush.get());
 }
 
 void Painter::drawRectText(float x, float y, float width, float height, const std::wstring &str)
 {
-    FontFamily fF(fontFamily.c_str());
-    RectF frect(x, y, width, height);
-    Font font(&fF, fontSize);
+    Gdiplus::FontFamily fF(fontFamily.c_str());
+    Gdiplus::RectF frect(x, y, width, height);
+    Gdiplus::Font font(&fF, fontSize);
     graphics.DrawString(str.c_str(), -1, &font,
                         frect, stringFormat.get(), solidBrush.get());
 }
 
 // 设置画笔画刷, 封装常用设置
-void Painter::setTextColor(const Color &c)
+void Painter::setTextColor(const Gdiplus::Color &c)
 {
     solidBrush->SetColor(c);
 }
@@ -105,7 +105,7 @@ void Painter::setPenWidth(int width)
     pen->SetWidth(width);
 }
 
-void Painter::setPenColor(const Color &c)
+void Painter::setPenColor(const Gdiplus::Color &c)
 {
     pen->SetColor(c);
 }
@@ -114,7 +114,7 @@ void Painter::setPenColor(const Color &c)
 void Painter::setTextVertial(bool flag)
 {
     if (flag)
-        stringFormat->SetFormatFlags(StringFormatFlagsDirectionVertical);
+        stringFormat->SetFormatFlags(Gdiplus::StringFormatFlagsDirectionVertical);
     else
         stringFormat->SetFormatFlags(0x0);
 }
@@ -130,17 +130,17 @@ void Painter::setFontFamily(const std::wstring &str)
 }
 
 // 执行复制
-void Painter::setSolidBrush(const SolidBrush &sb)
+void Painter::setSolidBrush(const Gdiplus::SolidBrush &sb)
 {
     solidBrush.reset(sb.Clone());
 }
 
-void Painter::setStringFormat(const StringFormat &sg)
+void Painter::setStringFormat(const Gdiplus::StringFormat &sg)
 {
     stringFormat.reset(sg.Clone());
 }
 
-void Painter::setPen(const Pen &p)
+void Painter::setPen(const Gdiplus::Pen &p)
 {
     pen.reset(p.Clone());
 }

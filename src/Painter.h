@@ -30,31 +30,31 @@ public:
 
     // 绘制文字
     void drawText(float x, float y, const std::wstring& str);
-    void drawRectText(const RectF& rect, const std::wstring& str);
+    void drawRectText(const Gdiplus::RectF& rect, const std::wstring& str);
     void drawRectText(float x, float y, float width, float height, const std::wstring& str);
 
     // 设置
-    void setPenColor(const Color& c);
-    void setPen(const Pen& p);
+    void setPenColor(const Gdiplus::Color& c);
+    void setPen(const Gdiplus::Pen& p);
     void setFontFamily(const std::wstring& str);
     void setPenWidth(int width);
-    void setTextColor(const Color& c);
+    void setTextColor(const Gdiplus::Color& c);
     void setTextVertial(bool flag);
-    void setStringFormat(const StringFormat& sg);
-    void setSolidBrush(const SolidBrush& sb);
+    void setStringFormat(const Gdiplus::StringFormat& sg);
+    void setSolidBrush(const Gdiplus::SolidBrush& sb);
     void setTextWidth(int size);
 private:
-    INT             fontSize;
-    HWND            hwnd;
-    HDC             hdc;
-    PAINTSTRUCT     ps;
-    Graphics        graphics;
-    std::wstring    fontFamily;
+    INT                   fontSize;
+    HWND                  hwnd;
+    HDC                   hdc;
+    PAINTSTRUCT           ps{};
+    Gdiplus::Graphics     graphics;
+    std::wstring          fontFamily;
 
     // 由于需要进行拷贝，使用智能指针
-    std::shared_ptr<Pen>            pen;
-    std::shared_ptr<StringFormat>   stringFormat;
-    std::shared_ptr<SolidBrush>     solidBrush;
+    std::shared_ptr<Gdiplus::Pen>            pen;
+    std::shared_ptr<Gdiplus::StringFormat>   stringFormat;
+    std::shared_ptr<Gdiplus::SolidBrush>     solidBrush;
 };
 
 #endif //WGUILIB_PAINTER_H

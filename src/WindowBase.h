@@ -6,11 +6,10 @@
 #include "MouseEventC.h"
 #include "KeyEventC.h"
 #include "func.h"
+#include "PushButtonEvent.h"
 
 #ifndef WGUILIB_WINDOWBASE_H
 #define WGUILIB_WINDOWBASE_H
-
-using namespace Gdiplus;
 
 // 窗口基类
 class WindowBase
@@ -33,10 +32,9 @@ protected:
     virtual void keyEvent(KeyEventC& ke){}
     virtual void paintEvent(){}
     virtual void mouseButtonEvent(MouseEventC& me){}
-    virtual void buttonClickEvent(){}
+    virtual void buttonClickEvent(PushButtonEvent& pe){}
     // 计时器还没调好....
     virtual void timerEvent(int timerId){}
-    virtual void setTimer(){}
 
 private:
     HWND     hwnd;
@@ -51,8 +49,8 @@ private:
     char    szTitle[255] = "New window";
 
     // GDI
-    GdiplusStartupInput gdiplusInput;
-    ULONG_PTR           gdiplusToken;
+    Gdiplus::GdiplusStartupInput gdiplusInput;
+    ULONG_PTR                    gdiplusToken;
 
     // 初始化函数
     bool init();

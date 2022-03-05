@@ -50,7 +50,7 @@ WindowBase::WindowBase()
 
 WindowBase::~WindowBase()
 {
-    GdiplusShutdown(gdiplusToken);
+    Gdiplus::GdiplusShutdown(gdiplusToken);
 }
 
 // 初始化函数
@@ -110,7 +110,8 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
                 case BN_CLICKED:
                 {
                     int ID = LOWORD(wparam);
-                    g_windowBase->buttonClickEvent(ID);
+                    PushButtonEvent pe(ID);
+                    g_windowBase->buttonClickEvent(pe);
                 }
             }
         }

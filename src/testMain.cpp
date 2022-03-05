@@ -13,15 +13,18 @@ public:
     ~TestWindow() noexcept;
 protected:
     virtual void keyEvent(KeyEventC& ke) override;
-    virtual void setTimer() override;
     virtual void timerEvent(int ID) override;
+    virtual void buttonClickEvent(PushButtonEvent& pe) override;
 private:
     Timer timer1;
     PushButton pushButton;
+    PushButton pushButton1;
 };
 
-TestWindow::TestWindow() : WindowBase(), pushButton(this)
+TestWindow::TestWindow() : WindowBase(), pushButton(this), timer1(this, 1), pushButton1(this, "123", 20, 20, 100, 100)
 {
+    timer1.startTimer(1000);
+    SetTimer(this->getHwnd(), 10, 1000, NULL);
 }
 
 TestWindow::~TestWindow() noexcept
@@ -35,17 +38,23 @@ void TestWindow::keyEvent(KeyEventC &ke)
         printf("%c\n", ke.getKey());
 }
 
-void TestWindow::setTimer()
-{
-    timer1.setId(10);
-    timer1.setParent(this);
-    timer1.startTimer(100);
-}
-
 void TestWindow::timerEvent(int ID)
 {
-    printf("&*&");
+    printf("123");
 }
+
+void TestWindow::buttonClickEvent(PushButtonEvent &pe)
+{
+    if (pe.which() == pushButton.getID())
+    {
+        printf("123");
+    }
+    else if (pe.which() == pushButton1.getID())
+    {
+        printf("456");
+    }
+}
+
 int main(int argc, char** argv)
 {
     TestWindow w;

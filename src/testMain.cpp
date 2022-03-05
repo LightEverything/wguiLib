@@ -4,8 +4,6 @@
 
 #include "./wguiLib.h"
 
-extern HINSTANCE g_hInstance;
-
 class TestWindow : public WindowBase
 {
 public:
@@ -16,15 +14,13 @@ protected:
     virtual void timerEvent(int ID) override;
     virtual void buttonClickEvent(PushButtonEvent& pe) override;
 private:
-    Timer timer1;
     PushButton pushButton;
     PushButton pushButton1;
 };
 
-TestWindow::TestWindow() : WindowBase(), pushButton(this), timer1(this, 1), pushButton1(this, "123", 20, 20, 100, 100)
+TestWindow::TestWindow() : WindowBase(), pushButton(this),
+    pushButton1(this, "123", 20, 20, 100, 1000)
 {
-    timer1.startTimer(1000);
-    SetTimer(this->getHwnd(), 10, 1000, NULL);
 }
 
 TestWindow::~TestWindow() noexcept
@@ -54,6 +50,8 @@ void TestWindow::buttonClickEvent(PushButtonEvent &pe)
         printf("456");
     }
 }
+
+
 
 int main(int argc, char** argv)
 {

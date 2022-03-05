@@ -12,12 +12,13 @@ Timer::Timer(WindowBase* wb, int ID)
 
 Timer::Timer()
 {
-
+    hwnd = NULL;
 }
 
 Timer::~Timer()
 {
-    KillTimer(hwnd, timerId);
+    if (timerId != -1)
+        KillTimer(hwnd, timerId);
 }
 
 bool Timer::startTimer(int ms)

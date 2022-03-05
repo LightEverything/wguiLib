@@ -17,6 +17,7 @@ public:
                int y = 0,
                int width = 50,
                int height = 50);
+
     ~PushButton();
 private:
     HWND     hwnd;

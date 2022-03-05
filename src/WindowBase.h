@@ -33,6 +33,7 @@ protected:
     virtual void keyEvent(KeyEventC& ke){}
     virtual void paintEvent(){}
     virtual void mouseButtonEvent(MouseEventC& me){}
+    virtual void buttonClickEvent(){}
     // 计时器还没调好....
     virtual void timerEvent(int timerId){}
     virtual void setTimer(){}

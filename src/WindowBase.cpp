@@ -93,9 +93,10 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
     {
         case WM_TIMER:
         {
-            int timerId = wparam;
+            int timerId = (int)wparam;
             g_windowBase->timerEvent(timerId);
         }
+            break;
         case WM_DESTROY:
             PostQuitMessage(0);
             break;
@@ -103,6 +104,16 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
             g_windowBase->paintEvent();
             break;
         case WM_COMMAND:
+        {
+            switch (HIWORD(wparam))
+            {
+                case BN_CLICKED:
+                {
+                    int ID = LOWORD(wparam);
+                    g_windowBase->buttonClickEvent(ID);
+                }
+            }
+        }
             break;
         // 同时处理KEYDOWN事件
         case WM_CHAR:

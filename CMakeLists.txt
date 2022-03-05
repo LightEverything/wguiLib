@@ -4,7 +4,7 @@ project(wguiLib)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
-link_libraries(-lgdiplus)
+link_libraries(gdiplus)
 
 add_executable(wguiLib
         ./src/WindowBase.cpp

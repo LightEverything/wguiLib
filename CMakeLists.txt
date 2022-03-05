@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.21)
 project(wguiLib)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_COMPILER "D:/clion/CLion 2021.3/bin/mingw/bin/g++.exe")
 
 include_directories(.)
 link_libraries(gdiplus)

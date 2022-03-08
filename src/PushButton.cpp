@@ -6,7 +6,7 @@
 #include "func.h"
 
 // 静态成员初始化
-int PushButton::pushButtonID = 1;
+int PushButton::PushButtonID = 1;
 
 PushButton::PushButton(WindowBase *parent, const char *buttonText, int x, int y, int width, int height):
             posX(x),
@@ -20,15 +20,15 @@ PushButton::PushButton(WindowBase *parent, const char *buttonText, int x, int y,
 
     // 创建窗口
     if (!(hwnd = CreateWindowA(szWindowClass, szButtonText, WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
-                         posX, posY, this->width, this->height, parentHwnd, (HMENU)pushButtonID,
+                         posX, posY, this->width, this->height, parentHwnd, (HMENU)PushButtonID,
                          (HINSTANCE)GetWindowLongPtr(parentHwnd, GWLP_HINSTANCE), NULL)))
     {
         errorBox("CreateWindow is Error");
     }
     else
     {
-        this->ID = pushButtonID;
-        pushButtonID ++;
+        this->ID = PushButtonID;
+        PushButtonID ++;
     }
 
 }

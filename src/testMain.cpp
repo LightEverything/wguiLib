@@ -13,13 +13,14 @@ protected:
     virtual void keyEvent(KeyEventC& ke) override;
     virtual void timerEvent(int ID) override;
     virtual void buttonClickEvent(PushButtonEvent& pe) override;
+
 private:
-    PushButton pushButton;
-    PushButton pushButton1;
+    LineEdit lineEdit;
+    PushButton pb;
+    Timer timer1;
 };
 
-TestWindow::TestWindow() : WindowBase(), pushButton(this),
-    pushButton1(this, "123", 20, 20, 100, 1000)
+TestWindow::TestWindow() : WindowBase(), lineEdit(this), pb(this, "123", 50, 50)
 {
 }
 
@@ -41,23 +42,12 @@ void TestWindow::timerEvent(int ID)
 
 void TestWindow::buttonClickEvent(PushButtonEvent &pe)
 {
-    if (pe.which() == pushButton.getID())
-    {
-        printf("123");
-    }
-    else if (pe.which() == pushButton1.getID())
-    {
-        printf("456");
-    }
+    printf("%s", lineEdit.getTextLine());
 }
-
-
 
 int main(int argc, char** argv)
 {
-    WindowBase w2;
     TestWindow w, w1;
-    w.show(argc);
     w1.show(argc);
 
     return programExe();

@@ -70,6 +70,7 @@ bool WindowBase::show(int ncmd)
     return true;
 }
 
+//
 void WindowBase::setGeometry(int x, int y, int width, int height)
 {
     posX = x;

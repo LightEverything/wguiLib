@@ -20,5 +20,7 @@
 #include "src/Timer.h"
 // 按钮类
 #include "src/PushButton.h"
+// 行编辑类
+#include "src/LineEdit.h"
 
 #endif

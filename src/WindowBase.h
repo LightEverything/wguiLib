@@ -2,7 +2,9 @@
 // Created by Wanxin on 2022/2/20/
 //
 #include <windows.h>
+#include <winuser.h>
 #include <gdiplus.h>
+#include <string.h>
 #include "MouseEventC.h"
 #include "KeyEventC.h"
 #include "func.h"

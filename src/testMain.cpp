@@ -55,8 +55,10 @@ void TestWindow::buttonClickEvent(PushButtonEvent &pe)
 
 int main(int argc, char** argv)
 {
-    TestWindow w;
+    WindowBase w2;
+    TestWindow w, w1;
     w.show(argc);
+    w1.show(argc);
 
     return programExe();
 }

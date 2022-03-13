@@ -15,7 +15,7 @@
 2. 环境搭建
     * g++命令行编译：
    ```bash
-    
+    g++ -lgdiplus 
    ```
     * cmake 编译工具编译
    ```cmake

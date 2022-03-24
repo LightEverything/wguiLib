@@ -26,13 +26,24 @@
       直接将clone文件放clion里面打开就可以了  
    
     * devc++ 编译
-       1. 将dev-Cpp的include文件移动至devc++的MinGW64/include内
-       2. 将dev-Cpp的lib文件移动至devc++的MinGW64/lib内(操作完前面两步，以后就可以直接从第三步开始)
-       3. 用dev-Cpp创建新项目
-       4. 右键点开项目属性\参数\链接器，添加
-      ```g++
+       1. 将dev-Cpp的 include 文件移动至devc++的 MinGW64/include 内
+       2. 将dev-Cpp的 lib 文件移动至devc++的 MinGW64/lib 内   
+         (操作完前面两步，以后就可以直接从第三步开始)
+       4. 用dev-Cpp创建新项目
+       ![新建项目](https://github.com/LightEverything/wguiLib/blob/main/resource/dev_cpp_get1.png)
+       6. 右键点开项目属性\参数\链接器，添加  
+         ```g++
        -lwgui -lgdiplus
-      ```
+         ```   
+          
+          
+          
+          
+          
+       ![项目属性](https://github.com/LightEverything/wguiLib/blob/main/resource/dev_cpp_get2.png)  
+       
+       ![添加引用](https://github.com/LightEverything/wguiLib/blob/main/resource/dev_cpp_get3.png)
+
     * vscode 编译  
    
       

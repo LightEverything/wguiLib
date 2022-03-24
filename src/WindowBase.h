@@ -19,14 +19,15 @@ class WindowBase
 public:
     // 事件处理函数
     static LRESULT CALLBACK WinProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam);
-    WindowBase();
+    WindowBase(WindowBase* parent = nullptr);
     virtual ~WindowBase();
 
     // 注册计数
     static bool registers;
 
     HWND getHwnd() const;
-    bool show(int ncmd);
+    bool show(int ncmd  =SW_NORMAL);
+    void hide() const;
     void setGeometry(int x, int y, int width, int height);
 protected:
     // 事件函数
@@ -35,7 +36,6 @@ protected:
     virtual void paintEvent(){}
     virtual void mouseButtonEvent(MouseEventC& me){}
     virtual void buttonClickEvent(PushButtonEvent& pe){}
-    // 计时器还没调好....
     virtual void timerEvent(int timerId){}
 
 private:

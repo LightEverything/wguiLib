@@ -11,7 +11,7 @@
 class PushButton
 {
 public:
-    PushButton(WindowBase* parent,
+    PushButton(WindowBase* parent = nullptr,
                const char* buttonText = "",
                int x = 0,
                int y = 0,
@@ -21,6 +21,7 @@ public:
     virtual ~PushButton();
 
     int getID() const;
+    void hide() const;
 
     // 静态成员变量
     // PushButton不支持自定义ID, 此处使用一个静态成员变量解决ID问题

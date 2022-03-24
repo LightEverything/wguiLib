@@ -12,8 +12,12 @@ HINSTANCE     g_hInstance = NULL;
 bool WindowBase::registers = false;
 
 // 基类窗口的实现
-WindowBase::WindowBase()
+WindowBase::WindowBase(WindowBase* parent)
 {
+    HWND parentHwnd = nullptr;
+    if (parent)
+        parentHwnd = parent->hwnd;
+
     // 初始化windowClass
     wcs.style          = CS_HREDRAW | CS_VREDRAW;
     wcs.lpfnWndProc    = WinProc;
@@ -39,7 +43,7 @@ WindowBase::WindowBase()
     if (!(hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, szWindowClass,
                              szTitle,
                              WS_OVERLAPPEDWINDOW,  // 样式
-                             posX, posY, width, height,  NULL, NULL, g_hInstance, this)))
+                             posX, posY, width, height,  parentHwnd, NULL, g_hInstance, this)))
     {
         errorBox("Get windowsHandle error");
     }
@@ -203,4 +207,9 @@ LRESULT CALLBACK WindowBase::WinProc(HWND hwnd, UINT message, WPARAM wparam, LPA
         }
     }
     return DefWindowProc(hwnd, message, wparam, lparam);
+}
+
+void WindowBase::hide() const
+{
+    ShowWindow(hwnd, SW_HIDE);
 }

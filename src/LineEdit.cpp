@@ -42,3 +42,8 @@ const char *LineEdit::getTextLine()
 
     return this->szTextInLine;
 }
+
+void LineEdit::hide() const
+{
+    ShowWindow(hwnd, SW_SHOW);
+}

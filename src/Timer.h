@@ -21,8 +21,7 @@ public:
     void setParent(WindowBase* wb);
     void setId(int ID);
     // 开始计时
-    bool startTimer(int  ms);
-    bool startTimer(int  ms, TimerProc tp);
+    bool startTimer(int  ms, TimerProc tp = nullptr);
 private:
     int     timerId = -1;
     HWND    hwnd = NULL;

@@ -18,6 +18,7 @@ public:
     ~LineEdit();
 
     const char* getTextLine();
+    void hide() const;
 
     // ID静态成员变量
     static int LineEditID;

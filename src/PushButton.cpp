@@ -16,7 +16,8 @@ PushButton::PushButton(WindowBase *parent, const char *buttonText, int x, int y,
 {
     // 初始化按钮
     strncpy(szButtonText, buttonText, 255);
-    parentHwnd = parent->getHwnd();
+    if (parent)
+        parentHwnd = parent->getHwnd();
 
     // 创建窗口
     if (!(hwnd = CreateWindowA(szWindowClass, szButtonText, WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
@@ -41,4 +42,9 @@ PushButton::~PushButton()
 int PushButton::getID() const
 {
     return this->ID;
+}
+
+void PushButton::hide() const
+{
+    ShowWindow(hwnd, SW_HIDE);
 }

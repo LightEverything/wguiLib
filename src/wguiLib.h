@@ -22,5 +22,7 @@
 #include "src/PushButton.h"
 // 行编辑类
 #include "src/LineEdit.h"
+// 静态控件
+#include "src/Label.h"
 
 #endif

@@ -14,7 +14,7 @@ public:
 
     // 那个按钮
     int which();
-public:
+private:
     int ID = 0;
 };
 

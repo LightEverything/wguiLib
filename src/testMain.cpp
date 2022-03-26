@@ -20,11 +20,13 @@ protected:
 private:
     LineEdit lineEdit;
     PushButton pb;
+    PushButton pb2;
     Timer timer1;
 };
 
-TestWindow::TestWindow() : WindowBase(), lineEdit(this), pb(this, "123", 50, 50)
+TestWindow::TestWindow() : WindowBase(), lineEdit(this), pb(this, 50, 50, 100, 100, "123"), pb2(this, 100,100, 100, 100, "123123")
 {
+    lineEdit.setGeometry(20, 20, 200, 25);
 }
 
 TestWindow::~TestWindow() noexcept
@@ -45,7 +47,10 @@ TestWindow::~TestWindow() noexcept
 //
 void TestWindow::buttonClickEvent(PushButtonEvent &pe)
 {
-    pb.hide();
+    if (pe.which() == pb.getID())
+        pb.hide();
+    else if (pe.which() == pb2.getID())
+        printf("%s", lineEdit.getTextLine());
 }
 
 void TestWindow::paintEvent()

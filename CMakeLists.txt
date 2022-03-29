@@ -9,12 +9,8 @@ link_libraries(gdiplus)
 
 add_executable(wguiLib
         ./src/WindowBase.cpp
-        ./src/WindowBase.h
-        ./src/func.h
-        src/testMain.cpp
+        sample/testMain.cpp
         src/func.cpp
         src/Painter.cpp
-        src/Painter.h
         src/MouseEventC.cpp
-        src/MouseEventC.h
-        src/wguiLib.h src/KeyEventC.cpp src/KeyEventC.h src/Timer.cpp src/Timer.h src/PushButton.cpp src/PushButton.h src/PushButtonEvent.cpp src/PushButtonEvent.h src/RichEditor.cpp src/RichEditor.h src/LineEdit.cpp src/LineEdit.h src/WidgetBase.cpp src/WidgetBase.h)
+        src/KeyEventC.cpp src/Timer.cpp  src/PushButton.cpp src/PushButtonEvent.cpp  src/RichEditor.cpp  src/LineEdit.cpp  src/WidgetBase.cpp )

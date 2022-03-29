@@ -7,20 +7,22 @@
 // win32API头文件
 #include <windows.h>
 // 常用过程函数
-#include "src/func.h"
+#include "../include/func.h"
 // 绘制函数
-#include "src/Painter.h"
+#include "../include/Painter.h"
 // 鼠标事件函数
-#include "src/MouseEventC.h"
+#include "../include//MouseEventC.h"
 // 窗口基类
-#include "src/WindowBase.h"
+#include "../include/WindowBase.h"
 // 键盘事件函数
-#include "src/KeyEventC.h"
+#include "../include/KeyEventC.h"
 // 计时器类
-#include "src/Timer.h"
+#include "../include/Timer.h"
 // 按钮类
-#include "src/PushButton.h"
+#include "../include/PushButton.h"
 // 行编辑类
-#include "src/LineEdit.h"
+#include "../include/LineEdit.h"
+// 静态控件
+#include "../include/Label.h"
 
 #endif

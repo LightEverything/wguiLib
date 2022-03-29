@@ -2,7 +2,7 @@
 // Created by Wanxi on 2022/3/26.
 //
 
-#include "WidgetBase.h"
+#include "../include/WidgetBase.h"
 
 int WidgetBase::widgetID = 0;
 

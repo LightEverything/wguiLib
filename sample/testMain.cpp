@@ -2,7 +2,7 @@
 // Created by Wanxi on 2022/2/23.
 //
 
-#include "./wguiLib.h"
+#include "../include/wguiLib.h"
 
 class TestWindow : public WindowBase
 {

@@ -2,7 +2,7 @@
 // Created by Wanxin on 2022/2/20
 //
 
-#include "WindowBase.h"
+#include "../include/WindowBase.h"
 
 #pragma comment(lib, "Gdiplus.lib")
 

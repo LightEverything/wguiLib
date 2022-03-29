@@ -2,7 +2,7 @@
 // Created by Wanxin on 2022/2/20
 //
 
-#include "func.h"
+#include "../include/func.h"
 
 // 启动消息循环
 WPARAM programExe()

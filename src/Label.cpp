@@ -2,7 +2,7 @@
 // Created by Wanxi on 2022/3/25.
 //
 
-#include "Label.h"
+#include "../include/Label.h"
 
 int Label::labelID = 1;
 

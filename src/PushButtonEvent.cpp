@@ -2,7 +2,7 @@
 // Created by Wanxi on 2022/3/5.
 //
 
-#include "PushButtonEvent.h"
+#include "../include/PushButtonEvent.h"
 
 PushButtonEvent::PushButtonEvent(int pushButtonID)
 {

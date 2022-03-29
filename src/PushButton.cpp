@@ -2,8 +2,8 @@
 // Created by Wanxi on 2022/3/3.
 //
 
-#include "PushButton.h"
-#include "func.h"
+#include "../include/PushButton.h"
+#include "../include/func.h"
 
 
 PushButton::PushButton(WindowBase *parent, int x, int y, int width, int height, const std::string& buttonText):

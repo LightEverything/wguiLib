@@ -2,7 +2,7 @@
 // Created by Wanxi on 2022/2/24.
 //
 
-#include "Timer.h"
+#include "../include/Timer.h"
 
 Timer::Timer(WindowBase* wb, int ID)
 {

@@ -6,34 +6,24 @@
 #define WGUILIB_H_LINEEDIT_H
 
 #include <windows.h>
+#include "WidgetBase.h"
 #include "WindowBase.h"
 
-class LineEdit
+class LineEdit: public WidgetBase
 {
 public:
     LineEdit(WindowBase* parent,
-             const char* text = "",
              int x = 0, int y = 0,
-             int width = 0, int height = 0);
-    ~LineEdit();
+             int width = 200, int height = 25,
+             const std::string& text = "");
+    virtual ~LineEdit() noexcept;
 
     const char* getTextLine();
 
-    // ID静态成员变量
-    static int LineEditID;
-
+protected:
+    virtual void canUseThisClass() override{}
 private:
-    HWND     hwnd;
-    HWND     parentHwnd = NULL;
-    WNDCLASS wcs;
-
-    // 窗口属性
-    int     posX = 0;
-    int     posY = 0;
-    int     width = 300;
-    int     height = 30;
-    int     ID;
-    char    szWindowClass[255] = "EDIT";
+    // 获取行内字
     char    szTextInLine[255];
 };
 

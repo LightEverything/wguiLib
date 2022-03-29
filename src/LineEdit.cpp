@@ -2,7 +2,7 @@
 // Created by Wanxi on 2022/3/8.
 //
 
-#include "LineEdit.h"
+#include "../include/LineEdit.h"
 
 LineEdit::LineEdit(WindowBase* parent,
                    int x, int y,

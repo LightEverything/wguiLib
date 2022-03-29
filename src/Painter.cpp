@@ -2,7 +2,7 @@
 // Created by Wanxin on 2022/2/20/
 //
 
-#include "Painter.h"
+#include "../include/Painter.h"
 
 // 变量初始化
 Painter::Painter(WindowBase *wBase) :

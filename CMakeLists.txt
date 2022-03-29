@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.21)
 project(wguiLib)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_COMPILER "D:/clion/CLion 2021.3/bin/mingw/bin/g++.exe")
 
 include_directories(.)
 link_libraries(gdiplus)
@@ -13,4 +12,10 @@ add_executable(wguiLib
         src/func.cpp
         src/Painter.cpp
         src/MouseEventC.cpp
-        src/KeyEventC.cpp src/Timer.cpp  src/PushButton.cpp src/PushButtonEvent.cpp  src/RichEditor.cpp  src/LineEdit.cpp  src/WidgetBase.cpp )
+        src/KeyEventC.cpp
+        src/Timer.cpp
+        src/PushButton.cpp
+        src/PushButtonEvent.cpp
+        src/RichEditor.cpp
+        src/LineEdit.cpp
+        src/WidgetBase.cpp )

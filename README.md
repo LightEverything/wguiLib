@@ -33,22 +33,41 @@
    * clion 编译  
      直接将clone文件放clion里面打开就可以了  
    
-   * devc++ 编译
+   * devc++ 编译 
      
      1. 将 include 文件移动至devc++的 MinGW64/include 内
-     2. 将 lib 文件移动至devc++的 MinGW64/lib 内   
+     
+     2. 将 lib 文件移动至devc++的 MinGW64/lib 内  
         (操作完前面两步，以后就可以直接从第三步开始)
+     
      3. 用dev-Cpp创建新项目
-        ![新建项目](https://github.com/LightEverything/wguiLib/blob/main/resource/dev_cpp_get1.png)
-     4. 右键点开项目属性\参数\链接器，添加  
-        
-        ```g++
-        -lwgui -lgdiplus    
-        ```
-
-![项目属性](https://github.com/LightEverything/wguiLib/blob/main/resource/dev_cpp_get2.png)
-![添加引用](https://github.com/LightEverything/wguiLib/blob/main/resource/dev_cpp_get3.png)
-
+     
+     4. 右键点开项目属性\参数\链接器，添加
+     
+     ```g++
+     -lwgui -lgdiplus
+     ```
+   
+   * vscode编译
+     
+     方法一：
+     
+     - 在vscode中打开项目文件夹
+     
+     - 新建终端，执行g++编译命令
+       
+       ```bash
+       g++ -o out.exe .\sample\testMain.cpp -L.\lib\ -lwgui -lgdiplus
+       ```
+     
+     方法二：CMake
+     
+     - 在vscode中安装CMake及CMake Tools这两个扩展，按要求重启vscode以激活扩展
+     - 打开项目文件夹，此时会自动识别CMakeLists.txt文件
+     - 按要求选择编译器
+     - 在下方状态栏中点击build按钮即可构建项目
+       
+       
 
 3. 使用方法 
    
@@ -59,9 +78,9 @@
      
      int main(int argc, char** argv)
      {
-       WindowBase w;   // 注册窗口基类
-       w.show(argc);   // 展示窗口
-       return programExe(); // 开始消息循环
+      WindowBase w;   // 注册窗口基类
+      w.show(argc);   // 展示窗口
+      return programExe(); // 开始消息循环
      }
      ```
      

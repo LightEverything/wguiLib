@@ -47,9 +47,7 @@ TestWindow::~TestWindow() noexcept
 //
 void TestWindow::buttonClickEvent(PushButtonEvent &pe)
 {
-    if (pe.which() == pb.getID())
-        pb.hide();
-    else if (pe.which() == pb2.getID())
+    if (pe.which() == pb2.getID())
         printf("%s", lineEdit.getTextLine());
 }
 
